@@ -4,15 +4,10 @@
   "outputDirectory": "frontend/dist",
   "installCommand": "npm run install:all",
   "framework": null,
-  "functions": {
-    "backend/api/index.ts": {
-      "runtime": "nodejs18.x"
-    }
-  },
   "rewrites": [
     {
       "source": "/api/(.*)",
-      "destination": "/backend/api/index.ts"
+      "destination": "/api/$1"
     },
     {
       "source": "/(.*)",
