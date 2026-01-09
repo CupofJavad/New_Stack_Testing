@@ -6,7 +6,7 @@ import dotenv from 'dotenv';
 import { config } from './config/env';
 import { errorHandler } from './middleware/errorHandler';
 import routes from './routes';
-import { pool, query } from './services/database';
+import { query } from './services/database';
 
 // Load environment variables
 dotenv.config();
@@ -142,7 +142,7 @@ export default app;
 async function initializeDatabase() {
   try {
     // Test database connection
-    const result = await query('SELECT NOW()');
+    await query('SELECT NOW()');
     console.log('✅ Database connected successfully');
     console.log(`📊 Database: ${config.postgresDb} @ ${config.postgresHost}:${config.postgresPort}`);
     return true;
