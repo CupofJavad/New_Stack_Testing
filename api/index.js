@@ -1,19 +1,37 @@
 // Vercel serverless function - CommonJS version
 // Import the built Express app (CommonJS output)
-const app = require('../backend/dist/server.js').default;
+
+let app;
+
+try {
+  // Try to load the built Express app
+  app = require('../backend/dist/server.js').default;
+} catch (error) {
+  console.error('Failed to load Express app:', error);
+  // Fallback handler if app fails to load
+  module.exports = (req, res) => {
+    res.status(500).json({
+      error: 'Server Configuration Error',
+      message: 'Failed to load Express application',
+      details: error.message
+    });
+  };
+  return;
+}
 
 // Vercel serverless function handler
 module.exports = (req, res) => {
   try {
-    // Adjust path - remove /api prefix since Vercel already routes to /api
+    // Vercel routes /api/* to this function
+    // Express app expects routes at /api/*, so we need to preserve the path
+    // But remove the leading /api if it exists (Vercel may pass it)
     const originalUrl = req.url || req.path || '';
-    if (originalUrl.startsWith('/api')) {
-      req.url = originalUrl.replace('/api', '') || '/';
+    
+    // If URL starts with /api, keep it (Express expects /api routes)
+    // If it doesn't, add /api prefix
+    if (!originalUrl.startsWith('/api')) {
+      req.url = '/api' + (originalUrl === '/' ? '' : originalUrl);
       req.path = req.url;
-    } else if (!req.url || req.url === '/') {
-      // If accessing /api directly, set to root
-      req.url = '/';
-      req.path = '/';
     }
     
     // Handle the request with Express app

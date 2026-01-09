@@ -38,7 +38,7 @@ if (config.appEnv !== 'production') {
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// Health check endpoint (works at root /health when called from Vercel)
+// Health check endpoint
 app.get('/health', (_req: Request, res: Response) => {
   res.status(200).json({
     status: 'ok',
@@ -47,8 +47,9 @@ app.get('/health', (_req: Request, res: Response) => {
   });
 });
 
-// API routes - mount at root since Vercel already handles /api prefix
-app.use('/', routes);
+// API routes - mount at /api for consistency
+// The Vercel handler will strip /api prefix before passing to Express
+app.use('/api', routes);
 
 // 404 handler
 app.use((req: Request, res: Response) => {
