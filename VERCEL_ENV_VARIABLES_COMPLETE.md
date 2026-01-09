@@ -18,6 +18,7 @@ Key: APP_ENV
 Value: production
 Environments: ✅ Production, ✅ Preview
 ```
+**Note**: Your template has `dev`, but use `production` for Vercel deployment
 
 ### 2. JWT Secret (Already have this, but here for reference)
 ```
@@ -81,11 +82,9 @@ Environments: ✅ Production, ✅ Preview
 
 ---
 
-## 🗄️ Database Variables (Test/Placeholder Values)
+## 🗄️ Database Variables
 
-If you're NOT using a database yet, you can skip these. If you want to test with a database later, use these placeholders:
-
-### PostgreSQL (Local/Test Database)
+### PostgreSQL (Local server)
 ```
 Key: POSTGRES_HOST
 Value: localhost
@@ -100,19 +99,19 @@ Environments: ✅ Production, ✅ Preview
 
 ```
 Key: POSTGRES_DB
-Value: test_db
+Value: lunaverse_db
 Environments: ✅ Production, ✅ Preview
 ```
 
 ```
 Key: POSTGRES_USER
-Value: test_user
+Value: lunaverse_admin
 Environments: ✅ Production, ✅ Preview
 ```
 
 ```
 Key: POSTGRES_PASSWORD
-Value: test_password_123
+Value: LunaAdminDB123!
 Environments: ✅ Production, ✅ Preview
 ```
 
@@ -124,32 +123,32 @@ Environments: ✅ Production, ✅ Preview
 
 ```
 Key: POSTGRES_SUPERUSER_PASSWORD
-Value: test_superuser_pass
+Value: RufusDeHiss_2025*!
 Environments: ✅ Production, ✅ Preview
 ```
 
 ```
 Key: POSTGRES_ALT_USER
-Value: alt_user
+Value: Rue_gres
 Environments: ✅ Production, ✅ Preview
 ```
 
 ```
 Key: POSTGRES_ALT_PASSWORD
-Value: alt_password_123
+Value: RufusDeHiss_2025*!
 Environments: ✅ Production, ✅ Preview
 ```
 
 ```
 Key: PGADMIN_MASTER_PASSWORD
-Value: pgadmin_test_123
+Value: LunaMasterKey_!*2025
 Environments: ✅ Production, ✅ Preview
 ```
 
-### DigitalOcean Database (If Using)
+### DigitalOcean Managed DB
 ```
 Key: DO_PG_HOST
-Value: test-do-host.db.ondigitalocean.com
+Value: genai-yellowfin-do-user-29516623-0.i.db.ondigitalocean.com
 Environments: ✅ Production, ✅ Preview
 ```
 
@@ -167,9 +166,10 @@ Environments: ✅ Production, ✅ Preview
 
 ```
 Key: DO_PG_PASSWORD
-Value: test_do_password
+Value: [YOUR_DO_PG_PASSWORD]
 Environments: ✅ Production, ✅ Preview
 ```
+**Note**: Use your actual DigitalOcean database password from your template
 
 ```
 Key: DO_PG_SSLMODE
@@ -179,24 +179,25 @@ Environments: ✅ Production, ✅ Preview
 
 ```
 Key: DO_API_TOKEN
-Value: dop_v1_test_token_placeholder
+Value: [YOUR_DO_API_TOKEN]
 Environments: ✅ Production, ✅ Preview
 ```
+**Note**: Use your actual DigitalOcean API token from your template
 
 ---
 
-## 👤 App User Variables (Test Values)
+## 👤 App User Variables
 
 ### Default Admin User
 ```
 Key: DEFAULT_ADMIN_EMAIL
-Value: admin@test.com
+Value: admin@example.com
 Environments: ✅ Production, ✅ Preview
 ```
 
 ```
 Key: DEFAULT_ADMIN_PASSWORD
-Value: AdminTest123!
+Value: Admin123!
 Environments: ✅ Production, ✅ Preview
 ```
 
@@ -209,54 +210,58 @@ Environments: ✅ Production, ✅ Preview
 ### App User
 ```
 Key: LUNAVERSE_APP_USER
-Value: test_app_user
+Value: lunaverse_app
 Environments: ✅ Production, ✅ Preview
 ```
 
 ```
 Key: LUNAVERSE_APP_PASSWORD
-Value: TestAppPass123!
+Value: Luna_App*!
 Environments: ✅ Production, ✅ Preview
 ```
 
 ---
 
-## 🔑 Third-Party Service Variables (Test/Placeholder Values)
+## 🔑 Third-Party Service Variables
 
-### GitHub Token (If Using GitHub API)
+### GitHub Token
 ```
 Key: GITHUB_TOKEN
-Value: ghp_test_token_placeholder_12345
+Value: [YOUR_GITHUB_TOKEN]
 Environments: ✅ Production, ✅ Preview
 ```
-**Note**: Replace with real token if actually using GitHub API
+**Note**: Use your actual GitHub token from your template
 
 ### Hugging Face
 ```
 Key: HF_TOKEN
-Value: hf_test_token_placeholder
+Value: [YOUR_HF_TOKEN]
 Environments: ✅ Production, ✅ Preview
 ```
+**Note**: Use your actual Hugging Face token from your template
 
 ```
 Key: HF_SSH_KEY_FINGERPRINT
-Value: SHA256:test_fingerprint_placeholder
+Value: [YOUR_HF_SSH_KEY_FINGERPRINT]
 Environments: ✅ Production, ✅ Preview
 ```
+**Note**: Use your actual Hugging Face SSH key fingerprint from your template
 
 ### Taskade
 ```
 Key: TASKADE_TOKEN
-Value: tskdp_test_token_placeholder
+Value: [YOUR_TASKADE_TOKEN]
 Environments: ✅ Production, ✅ Preview
 ```
+**Note**: Use your actual Taskade token from your template
 
 ### NameSilo
 ```
 Key: NAMESILO_API_KEY
-Value: test_namesilo_key_12345
+Value: [YOUR_NAMESILO_API_KEY]
 Environments: ✅ Production, ✅ Preview
 ```
+**Note**: Use your actual NameSilo API key from your template
 
 ```
 Key: NAMESILO_ACCOUNT_URL
@@ -266,37 +271,37 @@ Environments: ✅ Production, ✅ Preview
 
 ```
 Key: NAMESILO_SITE_BUILDER_URL
-Value: https://example.com
+Value: https://sites.google.com/view/thekeyholders?usp=sharing
 Environments: ✅ Production, ✅ Preview
 ```
 
 ---
 
-## 🖥️ Server Configuration (Optional - Test Values)
+## 🖥️ Server Configuration
 
 ### Server Info
 ```
 Key: SERVER_ADMIN_NAME
-Value: Test Server Admin
+Value: Luna Server Admin
 Environments: ✅ Production, ✅ Preview
 ```
 
 ```
 Key: SERVER_NAME
-Value: test-server
+Value: lunaverse
 Environments: ✅ Production, ✅ Preview
 ```
 
-### Lunaverse Server (If Using)
+### Lunaverse Server
 ```
 Key: LUNAVERSE_HOST
-Value: 192.168.1.100
+Value: 192.168.1.172
 Environments: ✅ Production, ✅ Preview
 ```
 
 ```
 Key: LUNAVERSE_SSH_USER
-Value: test_user
+Value: luna
 Environments: ✅ Production, ✅ Preview
 ```
 
@@ -308,7 +313,7 @@ Environments: ✅ Production, ✅ Preview
 
 ```
 Key: LUNAVERSE_SSH_PASSWORD
-Value: TestSSHPass123!
+Value: Lunatic_2025*!
 Environments: ✅ Production, ✅ Preview
 ```
 
@@ -320,13 +325,13 @@ Environments: ✅ Production, ✅ Preview
 
 ```
 Key: COCKPIT_URL
-Value: https://192.168.1.100:9090
+Value: https://192.168.1.172:9090
 Environments: ✅ Production, ✅ Preview
 ```
 
 ```
 Key: PGADMIN_URL
-Value: http://192.168.1.100:5050/browser/
+Value: http://192.168.1.172:5050/browser/
 Environments: ✅ Production, ✅ Preview
 ```
 

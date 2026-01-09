@@ -56,3 +56,4 @@ Thumbs.db
 .cache/
 .temp/
 .tmp/
+VERCEL_ENV_VALUES_PRIVATE.md
