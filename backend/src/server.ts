@@ -61,13 +61,14 @@ app.use((req: Request, res: Response) => {
 // Error handling middleware (must be last)
 app.use(errorHandler);
 
+// Export app for both server and serverless
+export default app;
+
 // Start server only if not in serverless environment (Vercel)
-if (process.env.VERCEL !== '1') {
+if (process.env.VERCEL !== '1' && typeof require !== 'undefined') {
   app.listen(PORT, () => {
     console.log(`🚀 Server running on port ${PORT}`);
     console.log(`📝 Environment: ${config.appEnv}`);
     console.log(`🌐 API URL: http://localhost:${PORT}`);
   });
 }
-
-export default app;
