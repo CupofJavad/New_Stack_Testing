@@ -8,7 +8,9 @@
     "build": "tsc",
     "start": "node dist/server.js",
     "lint": "eslint src --ext .ts",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "db:init": "node scripts/init-db.js",
+    "db:test": "node -e \"require('dotenv').config(); const {pool} = require('./dist/services/database'); pool.query('SELECT NOW()').then(r => {console.log('✅ DB Connected:', r.rows[0]); process.exit(0);}).catch(e => {console.error('❌ DB Error:', e.message); process.exit(1);});\""
   },
   "dependencies": {
     "express": "^4.18.2",
